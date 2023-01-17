@@ -318,10 +318,14 @@ stream = ExtResource( 15 )
 [node name="Sword" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 33 )
 
-[node name="RayEnemy" type="RayCast2D" parent="."]
+[node name="RayCast" type="Position2D" parent="."]
+
+[node name="RayHit" type="RayCast2D" parent="RayCast"]
 position = Vector2( 0, 5 )
+enabled = true
 cast_to = Vector2( 22, 0 )
 
-[node name="RayWall" type="RayCast2D" parent="."]
+[node name="RayWall" type="RayCast2D" parent="RayCast"]
 position = Vector2( 0, -2 )
+enabled = true
 cast_to = Vector2( 10, 0 )
