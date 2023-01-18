@@ -7,6 +7,7 @@ const JUMP_HEIGHT = 384
 const BOUNCING_JUMP: = 112
 const CAST_WALL = 10
 const CAST_ENEMY = 22 
+const CAST_DAMAGE = 30
 onready var motion : Vector2 = Vector2.ZERO
 var can_move : bool
 
@@ -23,6 +24,7 @@ func _process(_delta):
 	motion_ctrl()
 	jump_ctrl()
 	attack_ctrl()
+	damage_ctrl()
 
 
 func get_axis() -> Vector2:
@@ -80,11 +82,12 @@ func jump_ctrl():
 				playback.travel("Fall")
 			
 			if $RayCast/RayWall.is_colliding():
-				can_move = false
 				
 				var body = $RayCast/RayWall.get_collider()
 				
 				if body.is_in_group("Wall"):
+					can_move = false
+					
 					if Input.is_action_just_pressed("Jump"):
 						$Sounds/Jump.play()
 						motion.y -= JUMP_HEIGHT
@@ -125,7 +128,7 @@ func attack_ctrl():
 				"Air-Attack-1":
 					playback.travel("Air-Attack-2")
 					$Sounds/Sword.play()
-			
+				
 			match playback.get_current_node():
 				"Fall":
 					playback.travel("Air-Attack-1")
@@ -133,4 +136,14 @@ func attack_ctrl():
 				"Air-Attack-1":
 					playback.travel("Air-Attack-2")
 					$Sounds/Sword.play()
-	
+				
+			if $RayCast/RayHit.is_colliding():
+				if body.is_in_group("Enemy"):
+					body.damage_ctrl()
+
+func damage_ctrl():
+	if $RayCast/RayDamage.is_colliding():
+		var damage = $RayCast/RayDamage.get_collider()
+		
+		if damage.is_in_group("Enemy"):
+			playback.travel("Damage")
