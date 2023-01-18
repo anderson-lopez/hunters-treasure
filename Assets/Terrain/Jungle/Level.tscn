@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Terrain/Jungle/Sprites/Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Terrain/Jungle/Sprites/Background/plx-3.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Assets/Terrain/Jungle/Camera.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Player/Tscn/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Enemy/Tscn/Pink_Star/Pink_Star.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Enemy/Tscn/Fierce_Tooth/Fierce_Tooth.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Items/Tscn/Gold_Coin/Gold_Coin.tscn" type="PackedScene" id=11]
 
 [node name="Level" type="Node2D"]
 
@@ -76,8 +78,47 @@ tile_data = PoolIntArray( -327633, 0, 327686, -327632, 0, 65538, -327631, 0, 655
 [node name="Camera" parent="." instance=ExtResource( 7 )]
 position = Vector2( 193, 106 )
 
+[node name="Enemys" type="Node" parent="."]
+
+[node name="Pink_Star" parent="Enemys" instance=ExtResource( 9 )]
+position = Vector2( 431, 50 )
+
+[node name="Fierce_Tooth" parent="Enemys" instance=ExtResource( 10 )]
+position = Vector2( 160, 36 )
+
+[node name="Pink_Star2" parent="Enemys" instance=ExtResource( 9 )]
+position = Vector2( 311, 177 )
+
+[node name="Fierce_Tooth2" parent="Enemys" instance=ExtResource( 10 )]
+position = Vector2( 109, 179 )
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Coin" type="Node" parent="Items"]
+
+[node name="Gold_Coin" parent="Items/Coin" instance=ExtResource( 11 )]
+position = Vector2( 546, 120 )
+
+[node name="Gold_Coin2" parent="Items/Coin" instance=ExtResource( 11 )]
+position = Vector2( 281, 73 )
+
+[node name="Gold_Coin3" parent="Items/Coin" instance=ExtResource( 11 )]
+position = Vector2( 257, 73 )
+
+[node name="Gold_Coin4" parent="Items/Coin" instance=ExtResource( 11 )]
+position = Vector2( 247, 121 )
+
+[node name="Gold_Coin5" parent="Items/Coin" instance=ExtResource( 11 )]
+position = Vector2( 222, 121 )
+
+[node name="Gold_Coin6" parent="Items/Coin" instance=ExtResource( 11 )]
+position = Vector2( 665, 199 )
+
+[node name="Gold_Coin7" parent="Items/Coin" instance=ExtResource( 11 )]
+position = Vector2( 642, 200 )
+
+[node name="Gold_Coin8" parent="Items/Coin" instance=ExtResource( 11 )]
+position = Vector2( 566, 120 )
+
 [node name="Player" parent="." instance=ExtResource( 8 )]
 position = Vector2( 162, 176 )
-
-[node name="Pink_Star" parent="." instance=ExtResource( 9 )]
-position = Vector2( 431, 50 )

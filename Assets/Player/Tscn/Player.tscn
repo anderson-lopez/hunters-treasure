@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://Assets/Player/Captain with Sword/09-Idle Sword/Idle Sword 02.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Player/Captain with Sword/09-Idle Sword/Idle Sword 03.png" type="Texture" id=2]
@@ -33,6 +33,10 @@
 [ext_resource path="res://Assets/Player/Captain with Sword/19-Air Attack 2/Air Attack 2 03.png" type="Texture" id=31]
 [ext_resource path="res://Assets/Player/Captain with Sword/19-Air Attack 2/Air Attack 2 02.png" type="Texture" id=32]
 [ext_resource path="res://Assets/Player/Sounds/Sword Attack/Sword-1.wav" type="AudioStream" id=33]
+[ext_resource path="res://Assets/Player/Captain with Sword/14-Hit Sword/Hit Sword 04.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Player/Captain with Sword/14-Hit Sword/Hit Sword 03.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Player/Captain with Sword/14-Hit Sword/Hit Sword 01.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Player/Captain with Sword/14-Hit Sword/Hit Sword 02.png" type="Texture" id=37]
 
 [sub_resource type="Animation" id=12]
 resource_name = "Air-Attack-1"
@@ -114,6 +118,22 @@ tracks/0/keys = {
 "values": [ ExtResource( 27 ), ExtResource( 26 ), ExtResource( 29 ) ]
 }
 
+[sub_resource type="Animation" id=51]
+resource_name = "Damage"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 35 ), ExtResource( 34 ) ]
+}
+
 [sub_resource type="Animation" id=6]
 resource_name = "Fall"
 length = 0.001
@@ -163,6 +183,21 @@ tracks/0/keys = {
 "values": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 13 ) ]
 }
 
+[sub_resource type="Animation" id=52]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 37 ) ]
+}
+
 [sub_resource type="Animation" id=8]
 resource_name = "Run"
 length = 0.6
@@ -194,6 +229,9 @@ animation = "Attack-2"
 
 [sub_resource type="AnimationNodeAnimation" id=29]
 animation = "Attack-3"
+
+[sub_resource type="AnimationNodeAnimation" id=53]
+animation = "Damage"
 
 [sub_resource type="AnimationNodeAnimation" id=30]
 animation = "Fall"
@@ -244,26 +282,42 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id=49]
 switch_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=55]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=56]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+
 [sub_resource type="AnimationNodeStateMachine" id=23]
 states/Air-Attack-1/node = SubResource( 25 )
-states/Air-Attack-1/position = Vector2( 643, 78 )
+states/Air-Attack-1/position = Vector2( 479, 78 )
 states/Air-Attack-2/node = SubResource( 26 )
-states/Air-Attack-2/position = Vector2( 1034, 78 )
+states/Air-Attack-2/position = Vector2( 893, 78 )
 states/Attack-1/node = SubResource( 27 )
-states/Attack-1/position = Vector2( 380, 554 )
+states/Attack-1/position = Vector2( 180, 682 )
 states/Attack-2/node = SubResource( 28 )
-states/Attack-2/position = Vector2( 643, 554 )
+states/Attack-2/position = Vector2( 479, 682 )
 states/Attack-3/node = SubResource( 29 )
-states/Attack-3/position = Vector2( 898, 554 )
+states/Attack-3/position = Vector2( 701, 682 )
+states/Damage/node = SubResource( 53 )
+states/Damage/position = Vector2( 1120, 571 )
 states/Fall/node = SubResource( 30 )
 states/Fall/position = Vector2( 898, 269 )
 states/Idle/node = SubResource( 31 )
-states/Idle/position = Vector2( 643, 407 )
+states/Idle/position = Vector2( 479, 400 )
 states/Jump/node = SubResource( 32 )
-states/Jump/position = Vector2( 643, 269 )
+states/Jump/position = Vector2( 479, 264 )
 states/Run/node = SubResource( 33 )
 states/Run/position = Vector2( 898, 407 )
-transitions = [ "Idle", "Jump", SubResource( 34 ), "Jump", "Fall", SubResource( 35 ), "Fall", "Idle", SubResource( 36 ), "Idle", "Fall", SubResource( 37 ), "Idle", "Run", SubResource( 38 ), "Run", "Idle", SubResource( 39 ), "Idle", "Attack-1", SubResource( 40 ), "Attack-1", "Attack-2", SubResource( 41 ), "Attack-2", "Attack-3", SubResource( 42 ), "Attack-1", "Idle", SubResource( 43 ), "Attack-2", "Idle", SubResource( 44 ), "Attack-3", "Idle", SubResource( 45 ), "Jump", "Air-Attack-1", SubResource( 46 ), "Air-Attack-1", "Air-Attack-2", SubResource( 47 ), "Air-Attack-1", "Fall", SubResource( 48 ), "Air-Attack-2", "Fall", SubResource( 49 ) ]
+transitions = [ "Idle", "Jump", SubResource( 34 ), "Jump", "Fall", SubResource( 35 ), "Fall", "Idle", SubResource( 36 ), "Idle", "Fall", SubResource( 37 ), "Idle", "Run", SubResource( 38 ), "Run", "Idle", SubResource( 39 ), "Idle", "Attack-1", SubResource( 40 ), "Attack-1", "Attack-2", SubResource( 41 ), "Attack-2", "Attack-3", SubResource( 42 ), "Attack-1", "Idle", SubResource( 43 ), "Attack-2", "Idle", SubResource( 44 ), "Attack-3", "Idle", SubResource( 45 ), "Jump", "Air-Attack-1", SubResource( 46 ), "Air-Attack-1", "Air-Attack-2", SubResource( 47 ), "Air-Attack-1", "Fall", SubResource( 48 ), "Air-Attack-2", "Fall", SubResource( 49 ), "Fall", "Air-Attack-1", SubResource( 50 ), "Idle", "Damage", SubResource( 54 ), "Damage", "Idle", SubResource( 55 ), "Run", "Damage", SubResource( 56 ), "Damage", "Run", SubResource( 57 ), "Fall", "Damage", SubResource( 58 ), "Damage", "Fall", SubResource( 59 ) ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
@@ -289,7 +343,7 @@ scale_amount = 4.0
 scale_amount_random = 0.8
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 16 )
+texture = ExtResource( 37 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Air-Attack-1 = SubResource( 12 )
@@ -297,9 +351,11 @@ anims/Air-Attack-2 = SubResource( 14 )
 anims/Attack-1 = SubResource( 9 )
 anims/Attack-2 = SubResource( 10 )
 anims/Attack-3 = SubResource( 13 )
+anims/Damage = SubResource( 51 )
 anims/Fall = SubResource( 6 )
 anims/Idle = SubResource( 3 )
 anims/Jump = SubResource( 4 )
+anims/RESET = SubResource( 52 )
 anims/Run = SubResource( 8 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -326,6 +382,10 @@ enabled = true
 cast_to = Vector2( 22, 0 )
 
 [node name="RayWall" type="RayCast2D" parent="RayCast"]
-position = Vector2( 0, -2 )
+position = Vector2( 0, -12 )
 enabled = true
 cast_to = Vector2( 10, 0 )
+
+[node name="RayDamage" type="RayCast2D" parent="RayCast"]
+enabled = true
+cast_to = Vector2( 30, 0 )
