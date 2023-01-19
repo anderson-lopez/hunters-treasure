@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Assets/Player/Captain with Sword/09-Idle Sword/Idle Sword 02.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Player/Captain with Sword/09-Idle Sword/Idle Sword 03.png" type="Texture" id=2]
@@ -230,9 +230,6 @@ animation = "Attack-2"
 [sub_resource type="AnimationNodeAnimation" id=29]
 animation = "Attack-3"
 
-[sub_resource type="AnimationNodeAnimation" id=53]
-animation = "Damage"
-
 [sub_resource type="AnimationNodeAnimation" id=30]
 animation = "Fall"
 
@@ -284,18 +281,6 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=50]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=54]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=55]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=56]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=57]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=58]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=59]
-
 [sub_resource type="AnimationNodeStateMachine" id=23]
 states/Air-Attack-1/node = SubResource( 25 )
 states/Air-Attack-1/position = Vector2( 479, 78 )
@@ -307,8 +292,6 @@ states/Attack-2/node = SubResource( 28 )
 states/Attack-2/position = Vector2( 479, 682 )
 states/Attack-3/node = SubResource( 29 )
 states/Attack-3/position = Vector2( 701, 682 )
-states/Damage/node = SubResource( 53 )
-states/Damage/position = Vector2( 1120, 571 )
 states/Fall/node = SubResource( 30 )
 states/Fall/position = Vector2( 898, 269 )
 states/Idle/node = SubResource( 31 )
@@ -317,7 +300,8 @@ states/Jump/node = SubResource( 32 )
 states/Jump/position = Vector2( 479, 264 )
 states/Run/node = SubResource( 33 )
 states/Run/position = Vector2( 898, 407 )
-transitions = [ "Idle", "Jump", SubResource( 34 ), "Jump", "Fall", SubResource( 35 ), "Fall", "Idle", SubResource( 36 ), "Idle", "Fall", SubResource( 37 ), "Idle", "Run", SubResource( 38 ), "Run", "Idle", SubResource( 39 ), "Idle", "Attack-1", SubResource( 40 ), "Attack-1", "Attack-2", SubResource( 41 ), "Attack-2", "Attack-3", SubResource( 42 ), "Attack-1", "Idle", SubResource( 43 ), "Attack-2", "Idle", SubResource( 44 ), "Attack-3", "Idle", SubResource( 45 ), "Jump", "Air-Attack-1", SubResource( 46 ), "Air-Attack-1", "Air-Attack-2", SubResource( 47 ), "Air-Attack-1", "Fall", SubResource( 48 ), "Air-Attack-2", "Fall", SubResource( 49 ), "Fall", "Air-Attack-1", SubResource( 50 ), "Idle", "Damage", SubResource( 54 ), "Damage", "Idle", SubResource( 55 ), "Run", "Damage", SubResource( 56 ), "Damage", "Run", SubResource( 57 ), "Fall", "Damage", SubResource( 58 ), "Damage", "Fall", SubResource( 59 ) ]
+transitions = [ "Idle", "Jump", SubResource( 34 ), "Jump", "Fall", SubResource( 35 ), "Fall", "Idle", SubResource( 36 ), "Idle", "Fall", SubResource( 37 ), "Idle", "Run", SubResource( 38 ), "Run", "Idle", SubResource( 39 ), "Idle", "Attack-1", SubResource( 40 ), "Attack-1", "Attack-2", SubResource( 41 ), "Attack-2", "Attack-3", SubResource( 42 ), "Attack-1", "Idle", SubResource( 43 ), "Attack-2", "Idle", SubResource( 44 ), "Attack-3", "Idle", SubResource( 45 ), "Jump", "Air-Attack-1", SubResource( 46 ), "Air-Attack-1", "Air-Attack-2", SubResource( 47 ), "Air-Attack-1", "Fall", SubResource( 48 ), "Air-Attack-2", "Fall", SubResource( 49 ), "Fall", "Air-Attack-1", SubResource( 50 ) ]
+graph_offset = Vector2( 236.587, 121.516 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 

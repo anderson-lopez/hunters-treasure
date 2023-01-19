@@ -24,7 +24,7 @@ func _process(_delta):
 	motion_ctrl()
 	jump_ctrl()
 	attack_ctrl()
-	damage_ctrl()
+#	damage_ctrl()
 
 
 func get_axis() -> Vector2:
@@ -141,9 +141,17 @@ func attack_ctrl():
 				if body.is_in_group("Enemy"):
 					body.damage_ctrl()
 
-func damage_ctrl():
-	if $RayCast/RayDamage.is_colliding():
-		var damage = $RayCast/RayDamage.get_collider()
-		
-		if damage.is_in_group("Enemy"):
-			playback.travel("Damage")
+#func damage_ctrl():
+#	if $RayCast/RayDamage.is_colliding():
+#
+#		var body = $RayCast/RayDamage.get_collider()
+#
+#		if body.is_in_group("Enemy"):
+#			match $Sprite.flip_h:
+#				true:
+#					playback.travel("Damage")
+#					get_axis().x += CAST_DAMAGE
+#					print("Holis")
+#				false:
+#					playback.travel("Damage")
+#					get_axis().x -= CAST_DAMAGE
